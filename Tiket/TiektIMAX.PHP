@@ -3,7 +3,7 @@
 require_once 'Tiket.php';
 
 class TiketIMAX extends Tiket {
-    // Mewarisi tipeAudio dan lokasiBaris secara implisit, serta menambah properti khusus IMAX
+  
     private $tipeAudio;
     private $lokasiBaris;
     private $kacamata3dId;
@@ -17,10 +17,10 @@ class TiketIMAX extends Tiket {
         $this->efekGerakFitur = $efekGerakFitur;
     }
 
+    #[Override] 
     public function hitungTotalHarga() {
-        // Simulasi: Studio IMAX memiliki charge tambahan Rp 25.000 untuk maintenance alat/efek gerak
-        $biayaTambahanIMAX = 25000;
-        return ($this->getHargaDasarTiket() + $biayaTambahanIMAX) * $this->getJumlahKursi();
+        $biayaTambahanIMAX = 35000; 
+        return ($this->getJumlahKursi() * $this->getHargaDasarTiket()) + $biayaTambahanIMAX;
     }
 
     public function getFasilitasSpesifik() {
