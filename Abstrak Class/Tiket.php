@@ -8,7 +8,7 @@ abstract class Tiket {
     private $nama_film;
     private $jadwal_tayang;
     private $jumlah_kursi;
-    private $hargaDasarTiket; // Menggunakan camelCase sesuai permintaan Anda
+    private $hargaDasarTiket; 
     private $jenis_studio;
 
     // Constructor untuk memetakan data dari baris tabel database ke properti objek
@@ -21,9 +21,11 @@ abstract class Tiket {
         $this->jenis_studio = $jenis_studio;
     }
 
-    // Abstract Method yang wajib diimplementasikan oleh kelas anak
+    // =========================================================================
+    // METODE ABSTRAK (Tanpa Isi/Body): Wajib diimplementasikan oleh kelas anak
+    // =========================================================================
     abstract public function hitungTotalHarga();
-    abstract public function getFasilitasSpesifik();
+    abstract public function tampilkanInfoFasilitas();
 
     // ==========================================
     // GETTER (Untuk mengakses properti private)
