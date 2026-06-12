@@ -5,7 +5,7 @@
 $host     = "localhost";
 $username = "root";
 $password = ""; // Kosongkan jika menggunakan XAMPP bawaan
-$dbname   = "db_latihan_pbo_trpl1a";
+$dbname   = "db_latihan_pbo_trpl1a_aylaazzura";
 
 try {
     // Membuat koneksi database menggunakan PDO
