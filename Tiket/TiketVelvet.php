@@ -3,7 +3,6 @@
 require_once 'Tiket.php';
 
 class TiketVelvet extends Tiket {
-    // Properti khusus kelas premium Velvet
     private $lokasiBaris;
     private $bantalSelimutPack;
     private $layananButler;
@@ -15,10 +14,9 @@ class TiketVelvet extends Tiket {
         $this->layananButler = $layananButler;
     }
 
+    #[Override] 
     public function hitungTotalHarga() {
-        // Simulasi: Studio Velvet memiliki charge premium service (Sofa Bed + Butler) sebesar Rp 60.000
-        $biayaPremiumService = 60000;
-        return ($this->getHargaDasarTiket() + $biayaPremiumService) * $this->getJumlahKursi();
+        return ($this->getJumlahKursi() * $this->getHargaDasarTiket()) * 1.50;
     }
 
     public function getFasilitasSpesifik() {
