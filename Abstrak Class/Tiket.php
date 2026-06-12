@@ -2,37 +2,34 @@
 // Tiket.php
 
 abstract class Tiket {
-    // Atribut Global (Induk) sesuai dengan struktur database
-    protected $id_tiket;
-    protected $nama_film;
-    protected $jadwal_tayang;
-    protected $jumlah_kursi;
-    protected $harga_dasar_tiket;
-    protected $jenis_studio;
+    // Properti/Atribut terenkapsulasi (Private)
+    // Nilainya dipetakan langsung dari kolom tabel database
+    private $id_tiket;
+    private $nama_film;
+    private $jadwal_tayang;
+    private $jumlah_kursi;
+    private $hargaDasarTiket; // Menggunakan camelCase sesuai permintaan Anda
+    private $jenis_studio;
 
-    // Constructor untuk menginisialisasi atribut global
-    public function __construct($nama_film, $jadwal_tayang, $jumlah_kursi, $harga_dasar_tiket, $jenis_studio) {
+    // Constructor untuk memetakan data dari baris tabel database ke properti objek
+    public function __construct($id_tiket, $nama_film, $jadwal_tayang, $jumlah_kursi, $hargaDasarTiket, $jenis_studio) {
+        $this->id_tiket = $id_tiket;
         $this->nama_film = $nama_film;
         $this->jadwal_tayang = $jadwal_tayang;
         $this->jumlah_kursi = $jumlah_kursi;
-        $this->harga_dasar_tiket = $harga_dasar_tiket;
+        $this->hargaDasarTiket = $hargaDasarTiket;
         $this->jenis_studio = $jenis_studio;
     }
 
-    // Abstract Method: Wajib dibuat ulang/diimplementasikan di kelas anak
-    // karena setiap jenis studio memiliki cara menghitung total harga yang berbeda
+    // Abstract Method yang wajib diimplementasikan oleh kelas anak
     abstract public function hitungTotalHarga();
-
-    // Abstract Method: Untuk mendapatkan spesifikasi fasilitas unik masing-masing studio
     abstract public function getFasilitasSpesifik();
 
-    // Getter dan Setter untuk atribut global (Induk)
+    // ==========================================
+    // GETTER (Untuk mengakses properti private)
+    // ==========================================
     public function getIdTiket() {
         return $this->id_tiket;
-    }
-
-    public function setIdTiket($id_tiket) {
-        $this->id_tiket = $id_tiket;
     }
 
     public function getNamaFilm() {
@@ -48,10 +45,29 @@ abstract class Tiket {
     }
 
     public function getHargaDasarTiket() {
-        return $this->harga_dasar_tiket;
+        return $this->hargaDasarTiket;
     }
 
     public function getJenisStudio() {
         return $this->jenis_studio;
+    }
+
+    // ==========================================
+    // SETTER (Jika ingin mengubah nilai properti)
+    // ==========================================
+    public function setNamaFilm($nama_film) {
+        $this->nama_film = $nama_film;
+    }
+
+    public function setJadwalTayang($jadwal_tayang) {
+        $this->jadwal_tayang = $jadwal_tayang;
+    }
+
+    public function setJumlahKursi($jumlah_kursi) {
+        $this->jumlah_kursi = $jumlah_kursi;
+    }
+
+    public function setHargaDasarTiket($hargaDasarTiket) {
+        $this->hargaDasarTiket = $hargaDasarTiket;
     }
 }
