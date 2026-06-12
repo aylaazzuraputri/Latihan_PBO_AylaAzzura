@@ -11,10 +11,11 @@ class TiketReguler extends Tiket {
         $this->tipeAudio = $tipeAudio;
         $this->lokasiBaris = $lokasiBaris;
     }
-
-    // Implementasi hitung harga standar
+    
+    #[Override] 
     public function hitungTotalHarga() {
-        return $this->getHargaDasarTiket() * $this->getJumlahKursi();
+       
+        return $this->getJumlahKursi() * $this->getHargaDasarTiket();
     }
 
     public function getFasilitasSpesifik() {
@@ -23,8 +24,6 @@ class TiketReguler extends Tiket {
             'Lokasi Baris' => $this->lokasiBaris
         ];
     }
-
-    // Getter & Setter
     public function getTipeAudio() { return $this->tipeAudio; }
     public function setTipeAudio($tipeAudio) { $this->tipeAudio = $tipeAudio; }
     
